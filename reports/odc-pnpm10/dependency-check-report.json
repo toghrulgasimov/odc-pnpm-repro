@@ -1,0 +1,157 @@
+{
+    "reportSchema": "1.1",
+    "scanInfo": {
+        "engineVersion": "13.0.0",
+        "dataSource": [
+{
+                "name": "NVD API Last Checked",
+                "timestamp": "2026-10-16T02:25:15Z"
+            }
+,{
+                "name": "NVD API Last Modified",
+                "timestamp": "2026-10-14T15:41:49Z"
+            }
+,{
+                "name": "NVD Cache Last Checked",
+                "timestamp": "2026-10-16T02:25:15Z"
+            }
+,{
+                "name": "NVD Cache Last Modified",
+                "timestamp": "2026-10-14T15:41:49Z"
+            }
+        ]
+
+
+    },
+    "projectInfo": {
+        "name": "odc-pnpm-repro",
+        "reportDate": "2026-10-16T06:35:16.826440823Z",
+        "credits": {
+            "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
+            "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+            "NPM": "This report may contain data retrieved from the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
+            "RETIREJS": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
+            "OSSINDEX": "This report may contain data retrieved from the Sonatype Guide OSS Index API: https://www.sonatype.com/products/sonatype-guide/oss-index-users"
+        }
+    },
+    "dependencies": [
+{
+            "isVirtual": true,
+            "fileName": "lodash",
+            "filePath": "\/tmp\/odc-pnpm-repro\/pnpm\/pnpm-lock.yaml?lodash"
+            ,"projectReferences": [
+                "pnpm-lock.yaml: transitive"
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "lodash"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "lodash"
+                    }
+                ],
+                "versionEvidence": [
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:npm\/lodash"
+,"confidence": "HIGHEST"                    }
+            ]
+            ,"vulnerabilities": [
+ {
+                "source": "NPM",
+                "name": "GHSA-29mw-wpgm-hmr9",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 5.300000190734863
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-400",                        "CWE-1333"                    ],
+                "description": "All versions of package lodash prior to 4.17.21 are vulnerable to Regular Expression Denial of Service (ReDoS) via the `toNumber`, `trim` and `trimEnd` functions. \n\nSteps to reproduce (provided by reporter Liyuan Chen):\n```js\nvar lo = require('lodash');\n\nfunction build_blank(n) {\n    var ret = \"1\"\n    for (var i = 0; i < n; i++) {\n        ret += \" \"\n    }\n    return ret + \"1\";\n}\nvar s = build_blank(50000) var time0 = Date.now();\nlo.trim(s) \nvar time_cost0 = Date.now() - time0;\nconsole.log(\"time_cost0: \" + time_cost0);\nvar time1 = Date.now();\nlo.toNumber(s) var time_cost1 = Date.now() - time1;\nconsole.log(\"time_cost1: \" + time_cost1);\nvar time2 = Date.now();\nlo.trimEnd(s);\nvar time_cost2 = Date.now() - time2;\nconsole.log(\"time_cost2: \" + time_cost2);\n```",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JS-LODASH-1018905","name": "https:\/\/snyk.io\/vuln\/SNYK-JS-LODASH-1018905"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-29mw-wpgm-hmr9","name": "https:\/\/github.com\/advisories\/GHSA-29mw-wpgm-hmr9"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074895","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074895"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/pull\/5065\/commits\/02906b8191d3c100c193fe6f7b27d1c40f200bb7","name": "https:\/\/github.com\/lodash\/lodash\/pull\/5065\/commits\/02906b8191d3c100c193fe6f7b27d1c40f200bb7"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARS-1074894","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARS-1074894"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/security-alerts\/cpujul2022.html","name": "https:\/\/www.oracle.com\/security-alerts\/cpujul2022.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/blob\/npm\/trimEnd.js%23L8","name": "https:\/\/github.com\/lodash\/lodash\/blob\/npm\/trimEnd.js%23L8"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSNPM-1074893","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSNPM-1074893"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/\/security-alerts\/cpujul2021.html","name": "https:\/\/www.oracle.com\/\/security-alerts\/cpujul2021.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/security-alerts\/cpuoct2021.html","name": "https:\/\/www.oracle.com\/security-alerts\/cpuoct2021.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2020-28500","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2020-28500"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cert-portal.siemens.com\/productcert\/pdf\/ssa-637483.pdf","name": "https:\/\/cert-portal.siemens.com\/productcert\/pdf\/ssa-637483.pdf"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/github\/advisory-database\/pull\/6139","name": "https:\/\/github.com\/github\/advisory-database\/pull\/6139"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGFUJIONWEBJARS-1074896","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGFUJIONWEBJARS-1074896"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/commit\/c4847ebe7d14540bb28a8b932a9ce1b9ecbfee1a","name": "https:\/\/github.com\/lodash\/lodash\/commit\/c4847ebe7d14540bb28a8b932a9ce1b9ecbfee1a"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/pull\/5065","name": "https:\/\/github.com\/lodash\/lodash\/pull\/5065"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWER-1074892","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWER-1074892"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/rubysec\/ruby-advisory-db\/blob\/master\/gems\/lodash-rails\/CVE-2020-28500.yml","name": "https:\/\/github.com\/rubysec\/ruby-advisory-db\/blob\/master\/gems\/lodash-rails\/CVE-2020-28500.yml"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/security-alerts\/cpujan2022.html","name": "https:\/\/www.oracle.com\/security-alerts\/cpujan2022.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/security.netapp.com\/advisory\/ntap-20210312-0006","name": "https:\/\/security.netapp.com\/advisory\/ntap-20210312-0006"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:lodash:\\>\\=4.0.0\\<4.17.21:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }            ]        },{
+            "isVirtual": false,
+            "fileName": "package.json",
+            "filePath": "\/tmp\/odc-pnpm-repro\/pnpm\/package.json"
+,"md5": "ccfb0586b390de05c09de5c1251e1f38",
+            "sha1": "6047abc1044f5d66c42051c3585e8f0b467b556d",
+            "sha256": "94775c292a9d31800579b8d02c2172427f470f4d61dbce560720a11e112634a9"            ,"evidenceCollected": {
+                "vendorEvidence": [
+                ],
+                "productEvidence": [
+                ],
+                "versionEvidence": [
+                ]
+            }
+
+        }    ]
+}
